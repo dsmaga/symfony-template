@@ -16,10 +16,10 @@ destroy: # Kill all containers, remove volumes and networks
 	docker compose down
 
 install: # install composer dependencies using app service
-	docker compose run --rm --user 1000:1000 php composer install
+	docker compose run --rm --user $(shell id -u):$(shell id -g) php composer install
 
 upgrade: # updates composer dependencies using app service
-	docker compose run --rm --user 1000:1000 php composer upgrade
+	docker compose run --rm --user $(shell id -u):$(shell id -g) php composer upgrade
 
 app: # attach to running app service with bash shell
 	docker compose exec php bash
@@ -34,7 +34,11 @@ phpcs: # Run phpcs
 	docker compose run --rm php ./vendor/bin/phpcs
 
 phpcbf: # Run phpcbf
-	docker compose run --rm --user 1000:1000 php ./vendor/bin/phpcbf
+	docker compose run --rm --user $(shell id -u):$(shell id -g) php ./vendor/bin/phpcbf
 
 grumphp: # Run grumphp
-	docker compose run --rm --user 1000:1000 php ./vendor/bin/grumphp run
+	docker compose run --rm --user $(shell id -u):$(shell id -g) php ./vendor/bin/grumphp run
+
+grumphp-init: # Run grumphp init
+	docker compose run --rm --user $(shell id -u):$(shell id -g) php ./vendor/bin/grumphp git:init
+	docker compose run --rm --user $(shell id -u):$(shell id -g) php ./vendor/bin/grumphp git:pre-commit

@@ -5,7 +5,7 @@ services:
       - ./:/app
       - ${HOME}/.composer:/.composer
       ### required for grumphp
-      # - ./.git:/app/.git
+      - ./.git:/app/.git
 
   web:
     volumes:
