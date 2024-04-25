@@ -1,6 +1,8 @@
 {
+    "name": "dsmaga/template",
     "type": "project",
     "license": "proprietary",
+    "description": "Symfony application template",
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {

@@ -16,10 +16,10 @@ destroy: # Kill all containers, remove volumes and networks
 	docker compose down
 
 install: # install composer dependencies using app service
-	docker compose run --rm php composer install
+	docker compose run --rm --user 1000:1000 php composer install
 
 upgrade: # updates composer dependencies using app service
-	docker compose run --rm php composer upgrade
+	docker compose run --rm --user 1000:1000 php composer upgrade
 
 app: # attach to running app service with bash shell
 	docker compose exec php bash
