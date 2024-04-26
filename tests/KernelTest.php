@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Created by Dominik Smaga <dsmaga@gmail.com> at 25.04.2024 01:40.
+ * Created by dsmaga at 25.04.2024 01:40.
  */
 
 declare(strict_types=1);
